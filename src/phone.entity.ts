@@ -6,7 +6,7 @@ export class PhoneBook {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ unique: true })
+  @Column({ unique: true, type: 'bigint' })
   phonenumber: number;
 
   @Column()

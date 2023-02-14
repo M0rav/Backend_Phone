@@ -32,6 +32,17 @@ export class AppController {
     const phoneRepoadd = this.dataSource.getRepository(PhoneBook);
     await phoneRepoadd.save(newphoneuser);
   }
+  @Get('phone/list')
+  async listPhoneNum() {
+    const phoneRepo = this.dataSource.getRepository(PhoneBook);
+    return await phoneRepo.find();
+  }
+
+  @Delete('phone/delete/:id')
+  async deletePhoneNumber(@Param('id') id: number) {
+    const phoneRepo = this.dataSource.getTreeRepository(PhoneBook);
+    return await phoneRepo.delete(id);
+  }
 
   @Get('phone/:id')
   async getPersonName(@Param('id') id: number) {
